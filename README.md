@@ -27,11 +27,12 @@ Penjelasan 4 Pilar OOP dalam Studi Kasus
 
 ---
 
-**1. Inheritance**
-Pewarisan dilakukan pada kelas Makanan dan Minuman yang mewarisi atribut dan method dari kelas abstrak ItemMakanan.
+### 1️⃣ Inheritance (Pewarisan)
 
+Pewarisan digunakan pada kelas `Makanan` dan `Minuman`, yang mewarisi atribut dan method dari kelas abstrak `ItemMakanan`.
 
-// Superclass abstrak
+```java
+// Superclass Abstrak
 public abstract class ItemMakanan {
     protected int id;
     protected String nama;
@@ -69,13 +70,13 @@ public class Minuman extends ItemMakanan {
         return harga * jumlah;
     }
 }
+2️⃣ Encapsulation (Enkapsulasi)
+Data disembunyikan menggunakan modifier private dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
 
----
-
-**2. Encapsulation**
-Data disembunyikan menggunakan private dan diakses melalui method getter atau setter.
-
-// Class Pesanan (data disimpan secara private)
+java
+Copy
+Edit
+// Class Pesanan
 public class Pesanan {
     private int id;
     private int meja;
@@ -97,8 +98,9 @@ public class Pesanan {
         detailList.add(detail);
     }
 }
-
-
+java
+Copy
+Edit
 // Class DetailPesanan
 public class DetailPesanan {
     private ItemMakanan menu;
@@ -116,33 +118,35 @@ public class DetailPesanan {
         return menu.hitungHarga(jumlah);
     }
 }
+3️⃣ Polymorphism (Polimorfisme)
+Polimorfisme ditunjukkan dengan method hitungHarga() yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi ItemMakanan.
 
-**3. Polymorphism**
-Polymorphism ditunjukkan melalui method hitungHarga(int jumlah) yang memiliki implementasi berbeda di setiap subclass.
-
-// Pada superclass
+java
+Copy
+Edit
+// Superclass
 public abstract class ItemMakanan {
     public abstract double hitungHarga(int jumlah);
 }
 
-// Pada subclass Makanan
+// Subclass Makanan
 @Override
 public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
 
-// Pada subclass Minuman
+// Subclass Minuman
 @Override
 public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
+4️⃣ Abstraction (Abstraksi)
+Kelas ItemMakanan merupakan abstract class yang tidak bisa diinstansiasi secara langsung. Method hitungHarga dideklarasikan secara abstrak agar wajib diimplementasikan oleh subclass.
 
-
-**4. Abstract**
-Kelas ItemMakanan bersifat abstrak dan tidak dapat diinstansiasi secara langsung. Method hitungHarga juga abstrak dan harus diimplementasikan oleh subclass.
-
-
-// Abstract class
+java
+Copy
+Edit
+// Abstract Class
 public abstract class ItemMakanan {
     protected int id;
     protected String nama;
@@ -156,8 +160,22 @@ public abstract class ItemMakanan {
 
     public abstract double hitungHarga(int jumlah);
 }
-Demo Proyek
-Github: [https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097.git]
-Youtube: [Masukkan link YouTube atau video demo]
+🔧 Teknologi yang Digunakan
+💻 Bahasa Pemrograman: Java
+
+🛢️ Database: MySQL
+
+🔌 Koneksi: JDBC
+
+🧠 Paradigma: OOP (Object-Oriented Programming)
+
+🔗 Tautan Proyek
+📁 GitHub Repository: UTS_PBO2_TIF-K-23B_23552011097
+
+🎥 YouTube Demo: [Masukkan link YouTube atau video demo di sini]
+
+yaml
+Copy
+Edit
 
 
