@@ -149,8 +149,6 @@ CREATE TABLE detail_pesanan (
 ---
 
 ## Struktur Proyek
-```
---
 
 src/
 └── com.mycompany.kasirrestoran/
