@@ -145,8 +145,6 @@ CREATE TABLE detail_pesanan (
 - `KasirRestoran.java` – Logika sistem (CRUD)  
 - `Main.java` – Tampilan CLI dan interaksi pengguna  
 ```
----
-
 ```
 ## Struktur Proyek
 
