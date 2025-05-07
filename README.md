@@ -70,12 +70,8 @@ public class Minuman extends ItemMakanan {
         return harga * jumlah;
     }
 }
-
-
-
 ---
 
-<br>
 
 ## 2️⃣ Encapsulation (Enkapsulasi)
 Data disembunyikan menggunakan modifier private dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
@@ -103,12 +99,8 @@ public class Pesanan {
         detailList.add(detail);
     }
 }
-
-
-
 ---
 
-<br>
 
 // Class DetailPesanan
 public class DetailPesanan {
@@ -127,12 +119,8 @@ public class DetailPesanan {
         return menu.hitungHarga(jumlah);
     }
 }
-
-
-
 ---
 
-<br>
 
 ## 3️⃣ Polymorphism (Polimorfisme)
 Polimorfisme ditunjukkan dengan method hitungHarga() yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi ItemMakanan.
@@ -154,12 +142,7 @@ public double hitungHarga(int jumlah) {
 public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
-
-
-
 ---
-
-<br>
 
 
 ## 4️⃣ Abstraction (Abstraksi)
@@ -180,12 +163,7 @@ public abstract class ItemMakanan {
 
     public abstract double hitungHarga(int jumlah);
 }
-
-
-
 ---
-
-<br>
 
 
 🔗 Tautan Proyek
