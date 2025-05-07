@@ -5,7 +5,7 @@
 
 ## Profil  
 - **Nama**: Lita Alentina  
-- **NIM**: [Isi NIM Anda]  
+- **NIM**: 23552011097  
 - **Studi Kasus**: Sistem Kasir Restoran  
 
 ---
@@ -129,8 +129,8 @@ CREATE TABLE detail_pesanan (
 
 ## Demo Proyek
 
-- **GitHub**: [Tambahkan Link GitHub Anda]  
-- **YouTube**: [Tambahkan Link Video Demo]
+- **GitHub**: https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097.git  
+- **YouTube**: https://youtu.be/tODA-1ikwcg?si=T0TffNRm8WglQ2sT
 
 ---
 
