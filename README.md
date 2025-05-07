@@ -24,13 +24,13 @@ Studi kasus ini bertujuan membangun aplikasi kasir untuk restoran yang mampu men
 ---
 
 Penjelasan 4 Pilar OOP dalam Studi Kasus
+
 ---
-1. Inheritance
+
+**1. Inheritance**
 Pewarisan dilakukan pada kelas Makanan dan Minuman yang mewarisi atribut dan method dari kelas abstrak ItemMakanan.
 
-java
-Copy
-Edit
+
 // Superclass abstrak
 public abstract class ItemMakanan {
     protected int id;
@@ -69,12 +69,12 @@ public class Minuman extends ItemMakanan {
         return harga * jumlah;
     }
 }
-2. Encapsulation
+
+---
+
+**2. Encapsulation**
 Data disembunyikan menggunakan private dan diakses melalui method getter atau setter.
 
-java
-Copy
-Edit
 // Class Pesanan (data disimpan secara private)
 public class Pesanan {
     private int id;
@@ -97,9 +97,8 @@ public class Pesanan {
         detailList.add(detail);
     }
 }
-java
-Copy
-Edit
+
+
 // Class DetailPesanan
 public class DetailPesanan {
     private ItemMakanan menu;
@@ -117,12 +116,10 @@ public class DetailPesanan {
         return menu.hitungHarga(jumlah);
     }
 }
-3. Polymorphism
+
+**3. Polymorphism**
 Polymorphism ditunjukkan melalui method hitungHarga(int jumlah) yang memiliki implementasi berbeda di setiap subclass.
 
-java
-Copy
-Edit
 // Pada superclass
 public abstract class ItemMakanan {
     public abstract double hitungHarga(int jumlah);
@@ -139,12 +136,12 @@ public double hitungHarga(int jumlah) {
 public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
-4. Abstract
+
+
+**4. Abstract**
 Kelas ItemMakanan bersifat abstrak dan tidak dapat diinstansiasi secara langsung. Method hitungHarga juga abstrak dan harus diimplementasikan oleh subclass.
 
-java
-Copy
-Edit
+
 // Abstract class
 public abstract class ItemMakanan {
     protected int id;
@@ -160,7 +157,7 @@ public abstract class ItemMakanan {
     public abstract double hitungHarga(int jumlah);
 }
 Demo Proyek
-Github: [Masukkan link GitHub kamu]
+Github: [https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097.git]
 Youtube: [Masukkan link YouTube atau video demo]
 
 
