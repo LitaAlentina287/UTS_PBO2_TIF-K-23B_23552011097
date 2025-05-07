@@ -163,7 +163,6 @@ src/
     └── Main.java
 ```
 
-
 ## Source Code
 
 ### 1. `DatabaseConnection.java`
