@@ -70,12 +70,13 @@ public class Minuman extends ItemMakanan {
         return harga * jumlah;
     }
 }
+
+---
+
+
 2️⃣ Encapsulation (Enkapsulasi)
 Data disembunyikan menggunakan modifier private dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
 
-java
-Copy
-Edit
 // Class Pesanan
 public class Pesanan {
     private int id;
@@ -98,9 +99,9 @@ public class Pesanan {
         detailList.add(detail);
     }
 }
-java
-Copy
-Edit
+
+---
+
 // Class DetailPesanan
 public class DetailPesanan {
     private ItemMakanan menu;
@@ -118,12 +119,14 @@ public class DetailPesanan {
         return menu.hitungHarga(jumlah);
     }
 }
+
+---
+
+
 3️⃣ Polymorphism (Polimorfisme)
 Polimorfisme ditunjukkan dengan method hitungHarga() yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi ItemMakanan.
 
-java
-Copy
-Edit
+
 // Superclass
 public abstract class ItemMakanan {
     public abstract double hitungHarga(int jumlah);
@@ -140,12 +143,13 @@ public double hitungHarga(int jumlah) {
 public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
+
+---
+
+
 4️⃣ Abstraction (Abstraksi)
 Kelas ItemMakanan merupakan abstract class yang tidak bisa diinstansiasi secara langsung. Method hitungHarga dideklarasikan secara abstrak agar wajib diimplementasikan oleh subclass.
 
-java
-Copy
-Edit
 // Abstract Class
 public abstract class ItemMakanan {
     protected int id;
@@ -160,22 +164,15 @@ public abstract class ItemMakanan {
 
     public abstract double hitungHarga(int jumlah);
 }
-🔧 Teknologi yang Digunakan
-💻 Bahasa Pemrograman: Java
 
-🛢️ Database: MySQL
+---
 
-🔌 Koneksi: JDBC
-
-🧠 Paradigma: OOP (Object-Oriented Programming)
 
 🔗 Tautan Proyek
 📁 GitHub Repository: UTS_PBO2_TIF-K-23B_23552011097
 
 🎥 YouTube Demo: [Masukkan link YouTube atau video demo di sini]
 
-yaml
-Copy
-Edit
+
 
 
