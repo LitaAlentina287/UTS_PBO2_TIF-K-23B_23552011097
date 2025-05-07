@@ -72,7 +72,7 @@ public class Minuman extends ItemMakanan {
 }
 
 
----
+
 
 
 ## 2️⃣ Encapsulation (Enkapsulasi)
@@ -103,7 +103,7 @@ public class Pesanan {
 }
 
 
----
+
 
 
 // Class DetailPesanan
@@ -125,7 +125,7 @@ public class DetailPesanan {
 }
 
 
----
+
 
 
 ## 3️⃣ Polymorphism (Polimorfisme)
@@ -150,7 +150,7 @@ public double hitungHarga(int jumlah) {
 }
 
 
----
+
 
 
 ## 4️⃣ Abstraction (Abstraksi)
@@ -173,13 +173,13 @@ public abstract class ItemMakanan {
 }
 
 
----
+
 
 
 🔗 Tautan Proyek
 📁 GitHub Repository: UTS_PBO2_TIF-K-23B_23552011097
 
-🎥 YouTube Demo: [Masukkan link YouTube atau video demo di sini]
+🎥 YouTube Demo: https://youtu.be/tODA-1ikwcg?si=T0TffNRm8WglQ2sT
 
 
 
