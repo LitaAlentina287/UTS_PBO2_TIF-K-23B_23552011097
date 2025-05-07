@@ -23,7 +23,7 @@ Studi kasus ini bertujuan membangun aplikasi kasir untuk restoran yang mampu men
 
 ---
 
-Penjelasan 4 Pilar OOP dalam Studi Kasus
+## Penjelasan 4 Pilar OOP dalam Studi Kasus
 
 ---
 
@@ -77,6 +77,7 @@ public class Minuman extends ItemMakanan {
 ## 2️⃣ Encapsulation (Enkapsulasi)
 Data disembunyikan menggunakan modifier private dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
 
+```java
 // Class Pesanan
 public class Pesanan {
     private int id;
@@ -126,7 +127,7 @@ public class DetailPesanan {
 ## 3️⃣ Polymorphism (Polimorfisme)
 Polimorfisme ditunjukkan dengan method hitungHarga() yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi ItemMakanan.
 
-
+```java
 // Superclass
 public abstract class ItemMakanan {
     public abstract double hitungHarga(int jumlah);
@@ -150,6 +151,7 @@ public double hitungHarga(int jumlah) {
 ## 4️⃣ Abstraction (Abstraksi)
 Kelas ItemMakanan merupakan abstract class yang tidak bisa diinstansiasi secara langsung. Method hitungHarga dideklarasikan secara abstrak agar wajib diimplementasikan oleh subclass.
 
+```java
 // Abstract Class
 public abstract class ItemMakanan {
     protected int id;
