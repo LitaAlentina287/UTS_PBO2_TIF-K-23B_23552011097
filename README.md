@@ -147,24 +147,30 @@ CREATE TABLE detail_pesanan (
 ```
 
 ---
-## Struktur Proyek
+# 📚 Kasir Restoran
+
+Sistem kasir sederhana berbasis Java yang menggunakan konsep **Object-Oriented Programming (OOP)** dan **JDBC** untuk mengelola data pesanan makanan dan minuman pada sebuah restoran.
+
+---
+
+## 🧩 Struktur Proyek
 
 ```
 src/
 └── com.mycompany.kasirrestoran/
-    ├── DatabaseConnection.java       //  Koneksi ke database
-    ├── DetailPesanan.java            //  OOP: Encapsulation
-    ├── ItemMakanan.java              //  OOP: Abstraction
-    ├── Makanan.java                  //  OOP: Inheritance & Polymorphism
-    ├── Minuman.java                  //  OOP: Inheritance & Polymorphism
-    ├── Pesanan.java                  //  OOP: Encapsulation
-    ├── KasirRestoran.java            //  OOP: CRUD & Interaksi DB
-    └── Main.java                     //  Entry Point Aplikasi
+    ├── DatabaseConnection.java       // 🔌 Koneksi ke database
+    ├── DetailPesanan.java            // 🧩 OOP: Encapsulation
+    ├── ItemMakanan.java              // 🧱 OOP: Abstraction
+    ├── Makanan.java                  // 🍽️ OOP: Inheritance & Polymorphism
+    ├── Minuman.java                  // 🥤 OOP: Inheritance & Polymorphism
+    ├── Pesanan.java                  // 📦 OOP: Encapsulation
+    ├── KasirRestoran.java            // 🧠 OOP: CRUD & Interaksi DB
+    └── Main.java                     // 🚀 Entry Point Aplikasi
 ```
 
 ---
 
-## Source Code
+## 💻 Source Code
 
 ### 1. `DatabaseConnection.java`
 
@@ -197,6 +203,7 @@ public class DatabaseConnection {
 ```
 
 ---
+
 
 ### 2. `ItemMakanan.java` *(OOP: Abstraction)*
 
