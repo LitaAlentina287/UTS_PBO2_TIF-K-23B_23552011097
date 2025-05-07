@@ -146,7 +146,8 @@ CREATE TABLE detail_pesanan (
 - `Main.java` – Tampilan CLI dan interaksi pengguna  
 ```
 
-```
+---
+
 ## Struktur Proyek
 
 ```java
