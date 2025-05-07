@@ -88,9 +88,7 @@ public abstract class ItemMakanan {
 }
 ```
 
----
-
-## Struktur Database
+### Struktur Database
 
 **Database**: `kasir_restoran`  
 Tabel-tabel utama:
