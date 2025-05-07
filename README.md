@@ -467,7 +467,7 @@ public class KasirRestoran {
 ```java
 package com.mycompany.kasirrestoran;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -487,7 +487,7 @@ public class Main {
             System.out.print("Pilih: ");
             int pilihan = sc.nextInt();
 
-            s           switch (pilihan) {
+            switch (pilihan) {
                 case 1 -> {
                     sc.nextLine();
                     System.out.print("Nama: ");
