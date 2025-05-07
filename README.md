@@ -148,13 +148,6 @@ CREATE TABLE detail_pesanan (
 
 ---
 
-# Kasir Restoran
-
-Sistem kasir sederhana berbasis Java yang menggunakan konsep **Object-Oriented Programming (OOP)** dan **JDBC** untuk mengelola data restoran.
-```
-
----
-
 ## Struktur Proyek
 
 ```
