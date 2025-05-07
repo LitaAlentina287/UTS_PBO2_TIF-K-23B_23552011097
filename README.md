@@ -27,7 +27,7 @@ Penjelasan 4 Pilar OOP dalam Studi Kasus
 
 ---
 
-### 1️⃣ Inheritance (Pewarisan)
+## 1️⃣ Inheritance (Pewarisan)
 
 Pewarisan digunakan pada kelas `Makanan` dan `Minuman`, yang mewarisi atribut dan method dari kelas abstrak `ItemMakanan`.
 
@@ -74,7 +74,7 @@ public class Minuman extends ItemMakanan {
 ---
 
 
-2️⃣ Encapsulation (Enkapsulasi)
+## 2️⃣ Encapsulation (Enkapsulasi)
 Data disembunyikan menggunakan modifier private dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
 
 // Class Pesanan
@@ -123,7 +123,7 @@ public class DetailPesanan {
 ---
 
 
-3️⃣ Polymorphism (Polimorfisme)
+## 3️⃣ Polymorphism (Polimorfisme)
 Polimorfisme ditunjukkan dengan method hitungHarga() yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi ItemMakanan.
 
 
@@ -147,7 +147,7 @@ public double hitungHarga(int jumlah) {
 ---
 
 
-4️⃣ Abstraction (Abstraksi)
+## 4️⃣ Abstraction (Abstraksi)
 Kelas ItemMakanan merupakan abstract class yang tidak bisa diinstansiasi secara langsung. Method hitungHarga dideklarasikan secara abstrak agar wajib diimplementasikan oleh subclass.
 
 // Abstract Class
