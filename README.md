@@ -144,8 +144,6 @@ CREATE TABLE detail_pesanan (
 - `Pesanan.java` – Kumpulan detail pesanan  
 - `KasirRestoran.java` – Logika sistem (CRUD)  
 - `Main.java` – Tampilan CLI dan interaksi pengguna  
-
-
 ```
 
 ---
@@ -165,7 +163,6 @@ src/
     └── Main.java
 ```
 
----
 
 ## Source Code
 
