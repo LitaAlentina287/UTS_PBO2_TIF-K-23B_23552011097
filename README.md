@@ -70,6 +70,8 @@ public class Minuman extends ItemMakanan {
         return harga * jumlah;
     }
 }
+
+
 ---
 
 
@@ -99,6 +101,8 @@ public class Pesanan {
         detailList.add(detail);
     }
 }
+
+
 ---
 
 
@@ -119,6 +123,8 @@ public class DetailPesanan {
         return menu.hitungHarga(jumlah);
     }
 }
+
+
 ---
 
 
@@ -142,6 +148,8 @@ public double hitungHarga(int jumlah) {
 public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
+
+
 ---
 
 
@@ -163,6 +171,8 @@ public abstract class ItemMakanan {
 
     public abstract double hitungHarga(int jumlah);
 }
+
+
 ---
 
 
