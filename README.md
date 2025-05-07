@@ -147,21 +147,22 @@ CREATE TABLE detail_pesanan (
 ```
 
 ---
-
 ## Struktur Proyek
 
 ```
 src/
 └── com.mycompany.kasirrestoran/
-    ├── DatabaseConnection.java
-    ├── DetailPesanan.java <-- OOP: Encapsulation
-    ├── ItemMakanan.java     <-- OOP: Abstraction
-    ├── Makanan.java         <-- OOP: Inheritance & Polymorphism
-    ├── Minuman.java         <-- OOP: Inheritance & Polymorphism
-    ├── Pesanan.java         <-- OOP: Encapsulation
-    ├── KasirRestoran.java   <-- OOP: CRUD dan Interaksi DB
-    └── Main.java
+    ├── DatabaseConnection.java       //  Koneksi ke database
+    ├── DetailPesanan.java            //  OOP: Encapsulation
+    ├── ItemMakanan.java              //  OOP: Abstraction
+    ├── Makanan.java                  //  OOP: Inheritance & Polymorphism
+    ├── Minuman.java                  //  OOP: Inheritance & Polymorphism
+    ├── Pesanan.java                  //  OOP: Encapsulation
+    ├── KasirRestoran.java            //  OOP: CRUD & Interaksi DB
+    └── Main.java                     //  Entry Point Aplikasi
 ```
+
+---
 
 ## Source Code
 
@@ -194,6 +195,8 @@ public class DatabaseConnection {
     }
 }
 ```
+
+---
 
 ### 2. `ItemMakanan.java` *(OOP: Abstraction)*
 
