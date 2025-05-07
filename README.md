@@ -149,8 +149,9 @@ CREATE TABLE detail_pesanan (
 ---
 
 ## Struktur Proyek
-
 ```
+--
+
 src/
 └── com.mycompany.kasirrestoran/
     ├── DatabaseConnection.java     <-- OOP: Koneksi ke database
