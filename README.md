@@ -71,7 +71,10 @@ public class Minuman extends ItemMakanan {
     }
 }
 
+
+
 ---
+
 
 
 ## 2️⃣ Encapsulation (Enkapsulasi)
@@ -101,7 +104,11 @@ public class Pesanan {
     }
 }
 
+
+
 ---
+
+
 
 // Class DetailPesanan
 public class DetailPesanan {
@@ -121,7 +128,10 @@ public class DetailPesanan {
     }
 }
 
+
+
 ---
+
 
 
 ## 3️⃣ Polymorphism (Polimorfisme)
@@ -145,7 +155,11 @@ public double hitungHarga(int jumlah) {
     return harga * jumlah;
 }
 
+
+
 ---
+
+
 
 
 ## 4️⃣ Abstraction (Abstraksi)
@@ -167,7 +181,11 @@ public abstract class ItemMakanan {
     public abstract double hitungHarga(int jumlah);
 }
 
+
+
 ---
+
+
 
 
 🔗 Tautan Proyek
