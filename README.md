@@ -1,3 +1,4 @@
+
 # UTS Pemrograman Berorientasi Obyek 2
 
 **Mata Kuliah:** Pemrograman Berorientasi Obyek 2  
@@ -5,8 +6,8 @@
 
 ## Profil
 
-- **Nama:** {Lita Alentina}  
-- **NIM:** {23552011097}  
+- **Nama:** Lita Alentina  
+- **NIM:** 23552011097  
 - **Studi Kasus:** Sistem Kasir Restoran
 
 ---
@@ -19,7 +20,13 @@
 
 ## Penjelasan Studi Kasus
 
-Studi kasus ini bertujuan membangun aplikasi kasir untuk restoran yang mampu mencatat menu makanan dan minuman, membuat pesanan dari pelanggan, serta mencatat status pembayaran. Aplikasi dikembangkan menggunakan bahasa Java, database MySQL, dan menerapkan prinsip Pemrograman Berorientasi Objek (OOP) seperti inheritance, encapsulation, polymorphism, dan abstraction.
+Studi kasus ini bertujuan membangun aplikasi kasir untuk restoran yang mampu mencatat menu makanan dan minuman, membuat pesanan dari pelanggan, serta mencatat status pembayaran.  
+Aplikasi dikembangkan menggunakan bahasa **Java**, database **MySQL**, dan menerapkan prinsip **Pemrograman Berorientasi Objek (OOP)** seperti:
+
+- Inheritance  
+- Encapsulation  
+- Polymorphism  
+- Abstraction  
 
 ---
 
@@ -70,5 +77,115 @@ public class Minuman extends ItemMakanan {
         return harga * jumlah;
     }
 }
+```
 
+---
 
+## 2️⃣ Encapsulation (Enkapsulasi)
+
+Data disembunyikan menggunakan modifier `private` dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
+
+```java
+// Class Pesanan
+public class Pesanan {
+    private int id;
+    private int meja;
+    private String status;
+    private List<DetailPesanan> detailList = new ArrayList<>();
+
+    public Pesanan(int id, int meja, String status) {
+        this.id = id;
+        this.meja = meja;
+        this.status = status;
+    }
+
+    public int getId() { return id; }
+    public int getMeja() { return meja; }
+    public String getStatus() { return status; }
+    public List<DetailPesanan> getDetailList() { return detailList; }
+
+    public void tambahDetail(DetailPesanan detail) {
+        detailList.add(detail);
+    }
+}
+```
+
+```java
+// Class DetailPesanan
+public class DetailPesanan {
+    private ItemMakanan menu;
+    private int jumlah;
+
+    public DetailPesanan(ItemMakanan menu, int jumlah) {
+        this.menu = menu;
+        this.jumlah = jumlah;
+    }
+
+    public ItemMakanan getMenu() { return menu; }
+    public int getJumlah() { return jumlah; }
+
+    public double getTotalHarga() {
+        return menu.hitungHarga(jumlah);
+    }
+}
+```
+
+---
+
+## 3️⃣ Polymorphism (Polimorfisme)
+
+Polimorfisme ditunjukkan dengan method `hitungHarga()` yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi `ItemMakanan`.
+
+```java
+// Superclass
+public abstract class ItemMakanan {
+    public abstract double hitungHarga(int jumlah);
+}
+
+// Subclass Makanan
+@Override
+public double hitungHarga(int jumlah) {
+    return harga * jumlah;
+}
+
+// Subclass Minuman
+@Override
+public double hitungHarga(int jumlah) {
+    return harga * jumlah;
+}
+```
+
+---
+
+## 4️⃣ Abstraction (Abstraksi)
+
+Kelas `ItemMakanan` merupakan abstract class yang tidak bisa diinstansiasi secara langsung.  
+Method `hitungHarga()` dideklarasikan secara abstrak agar wajib diimplementasikan oleh subclass.
+
+```java
+// Abstract Class
+public abstract class ItemMakanan {
+    protected int id;
+    protected String nama;
+    protected double harga;
+
+    public ItemMakanan(int id, String nama, double harga) {
+        this.id = id;
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    public abstract double hitungHarga(int jumlah);
+}
+```
+
+---
+
+## 🎥 Demo Proyek
+
+📁 **GitHub Repository:** `UTS_PBO2_TIF-K-23B_23552011097`  
+🔗 **Link Repo:** [https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097](https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097)
+
+🎬 **YouTube Demo:** [https://youtu.be/tODA-1ikwcg](https://youtu.be/tODA-1ikwcg)
+
+---
