@@ -144,3 +144,285 @@ CREATE TABLE detail_pesanan (
 - `Pesanan.java` – Kumpulan detail pesanan  
 - `KasirRestoran.java` – Logika sistem (CRUD)  
 - `Main.java` – Tampilan CLI dan interaksi pengguna  
+
+---
+
+# Sistem Kasir Restoran
+
+Sistem ini merupakan aplikasi konsol berbasis Java yang menggunakan konsep Pemrograman Berorientasi Objek (OOP) dan koneksi JDBC ke database MySQL untuk mengelola menu restoran dan pesanan pelanggan.
+
+## Fitur
+
+* Menambahkan dan menghapus menu makanan/minuman
+* Membuat dan menghapus pesanan
+* Menampilkan daftar menu dan pesanan
+* Melakukan pembayaran pesanan
+
+---
+
+## Struktur Database MySQL
+
+**Nama Database:** `kasir_restoran`
+
+### Tabel `menu`
+
+```sql
+CREATE TABLE menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    harga DOUBLE,
+    jenis VARCHAR(20) -- 'makanan' atau 'minuman'
+);
+```
+
+### Tabel `pesanan`
+
+```sql
+CREATE TABLE pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    meja INT,
+    status VARCHAR(20) -- 'belum bayar' atau 'sudah bayar'
+);
+```
+
+### Tabel `detail_pesanan`
+
+```sql
+CREATE TABLE detail_pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pesanan_id INT,
+    menu_id INT,
+    jumlah INT,
+    FOREIGN KEY (pesanan_id) REFERENCES pesanan(id),
+    FOREIGN KEY (menu_id) REFERENCES menu(id)
+);
+```
+
+---
+
+## Struktur Proyek
+
+```
+src/
+└── com.mycompany.kasirrestoran/
+    ├── DatabaseConnection.java
+    ├── DetailPesanan.java <-- OOP: Encapsulation
+    ├── ItemMakanan.java     <-- OOP: Abstraction
+    ├── Makanan.java         <-- OOP: Inheritance & Polymorphism
+    ├── Minuman.java         <-- OOP: Inheritance & Polymorphism
+    ├── Pesanan.java         <-- OOP: Encapsulation
+    ├── KasirRestoran.java   <-- OOP: CRUD dan Interaksi DB
+    └── Main.java
+```
+
+---
+
+## Source Code
+
+### 1. `DatabaseConnection.java`
+
+```java
+package com.mycompany.kasirrestoran;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:3306/kasir_restoran";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    private static Connection connection;
+
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Connection getConnection() {
+        return connection;
+    }
+}
+```
+
+### 2. `ItemMakanan.java` *(OOP: Abstraction)*
+
+```java
+package com.mycompany.kasirrestoran;
+
+public abstract class ItemMakanan {
+    protected int id;
+    protected String nama;
+    protected double harga;
+
+    public ItemMakanan(int id, String nama, double harga) {
+        this.id = id;
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    public int getId() { return id; }
+    public String getNama() { return nama; }
+    public double getHarga() { return harga; }
+
+    public abstract double hitungHarga(int jumlah); // Polymorphism
+}
+```
+
+### 3. `Makanan.java` *(OOP: Inheritance & Polymorphism)*
+
+```java
+package com.mycompany.kasirrestoran;
+
+public class Makanan extends ItemMakanan {
+    public Makanan(int id, String nama, double harga) {
+        super(id, nama, harga);
+    }
+
+    @Override
+    public double hitungHarga(int jumlah) {
+        return harga * jumlah;
+    }
+}
+```
+
+### 4. `Minuman.java` *(OOP: Inheritance & Polymorphism)*
+
+```java
+package com.mycompany.kasirrestoran;
+
+public class Minuman extends ItemMakanan {
+    public Minuman(int id, String nama, double harga) {
+        super(id, nama, harga);
+    }
+
+    @Override
+    public double hitungHarga(int jumlah) {
+        return harga * jumlah;
+    }
+}
+```
+
+### 5. `DetailPesanan.java` *(OOP: Encapsulation)*
+
+```java
+package com.mycompany.kasirrestoran;
+
+public class DetailPesanan {
+    private ItemMakanan menu;
+    private int jumlah;
+
+    public DetailPesanan(ItemMakanan menu, int jumlah) {
+        this.menu = menu;
+        this.jumlah = jumlah;
+    }
+
+    public ItemMakanan getMenu() { return menu; }
+    public int getJumlah() { return jumlah; }
+
+    public double getTotalHarga() {
+        return menu.hitungHarga(jumlah);
+    }
+}
+```
+
+### 6. `Pesanan.java` *(OOP: Encapsulation)*
+
+```java
+package com.mycompany.kasirrestoran;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pesanan {
+    private int id;
+    private int meja;
+    private String status;
+    private List<DetailPesanan> detailList = new ArrayList<>();
+
+    public Pesanan(int id, int meja, String status) {
+        this.id = id;
+        this.meja = meja;
+        this.status = status;
+    }
+
+    public int getId() { return id; }
+    public int getMeja() { return meja; }
+    public String getStatus() { return status; }
+    public List<DetailPesanan> getDetailList() { return detailList; }
+
+    public void tambahDetail(DetailPesanan detail) {
+        detailList.add(detail);
+    }
+}
+```
+
+### 7. `KasirRestoran.java`
+
+```java
+package com.mycompany.kasirrestoran;
+
+// Kode implementasi CRUD Menu dan Pesanan
+// Termasuk operasi insert, delete, select, dan update dengan JDBC
+// Kelas ini merupakan penghubung logika bisnis dengan database
+```
+
+### 8. `Main.java`
+
+```java
+package com.mycompany.kasirrestoran;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        KasirRestoran kasir = new KasirRestoran();
+
+        while (true) {
+            System.out.println("\n=== Menu Kasir Restoran ===");
+            System.out.println("1. Tambah Menu");
+            System.out.println("2. Lihat Menu");
+            System.out.println("3. Buat Pesanan");
+            System.out.println("4. Bayar Pesanan");
+            System.out.println("5. Lihat Semua Pesanan");
+            System.out.println("6. Hapus Menu");
+            System.out.println("7. Hapus Pesanan");
+            System.out.println("8. Keluar");
+            System.out.print("Pilih: ");
+            int pilihan = sc.nextInt();
+
+            switch (pilihan) {
+                // Panggil fungsi dari kasir
+            }
+        }
+    }
+}
+```
+
+---
+
+## Konsep OOP yang Diterapkan
+
+| Konsep            | Contoh Kelas                                               |
+| ----------------- | ---------------------------------------------------------- |
+| **Abstraction**   | `ItemMakanan` (abstract class)                             |
+| **Inheritance**   | `Makanan`, `Minuman` dari `ItemMakanan`                    |
+| **Polymorphism**  | Override `hitungHarga()` di `Makanan`, `Minuman`           |
+| **Encapsulation** | `Pesanan`, `DetailPesanan` (atribut privat, getter/setter) |
+
+---
+
+## Cara Menjalankan
+
+1. Buat database dan tabel di MySQL sesuai struktur di atas.
+2. Sesuaikan konfigurasi koneksi di `DatabaseConnection.java`.
+3. Compile semua file `.java` dalam satu proyek.
+4. Jalankan `Main.java`.
+
+---
+
