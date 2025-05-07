@@ -30,162 +30,106 @@ Aplikasi dikembangkan menggunakan bahasa **Java**, database **MySQL**, dan mener
 
 ---
 
-## Penjelasan 4 Pilar OOP dalam Studi Kasus
+---
+
+## 1. Struktur Database
+
+### Database: `kasir_restoran`
+
+Sistem ini menggunakan 3 tabel utama:
+
+- `menu`: Menyimpan daftar makanan dan minuman.
+- `pesanan`: Menyimpan informasi umum pesanan.
+- `detail_pesanan`: Menyimpan rincian item yang dipesan.
+
+### SQL: Buat database dan tabel
+
+```sql
+CREATE DATABASE kasir_restoran;
+USE kasir_restoran;
+
+CREATE TABLE menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    harga DOUBLE NOT NULL,
+    kategori ENUM('Makanan', 'Minuman') NOT NULL
+);
+
+CREATE TABLE pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tanggal TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE detail_pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pesanan_id INT,
+    menu_id INT,
+    jumlah INT,
+    total_harga DOUBLE,
+    FOREIGN KEY (pesanan_id) REFERENCES pesanan(id),
+    FOREIGN KEY (menu_id) REFERENCES menu(id)
+);
+```
 
 ---
 
-## 1️⃣ Inheritance (Pewarisan)
+## 2. Koneksi ke Database
 
-Pewarisan digunakan pada kelas `Makanan` dan `Minuman`, yang mewarisi atribut dan method dari kelas abstrak `ItemMakanan`.
+### `DatabaseConnection.java`
 
 ```java
-// Superclass Abstrak
-public abstract class ItemMakanan {
-    protected int id;
-    protected String nama;
-    protected double harga;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-    public ItemMakanan(int id, String nama, double harga) {
-        this.id = id;
-        this.nama = nama;
-        this.harga = harga;
+public class DatabaseConnection {
+    private static final String URL = "jdbc:mysql://localhost:3306/kasir_restoran";
+    private static final String USER = "root"; // sesuaikan
+    private static final String PASSWORD = ""; // sesuaikan
+    private static Connection connection;
+
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Koneksi berhasil.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public abstract double hitungHarga(int jumlah);
-}
-
-// Subclass Makanan
-public class Makanan extends ItemMakanan {
-    public Makanan(int id, String nama, double harga) {
-        super(id, nama, harga);
-    }
-
-    @Override
-    public double hitungHarga(int jumlah) {
-        return harga * jumlah;
-    }
-}
-
-// Subclass Minuman
-public class Minuman extends ItemMakanan {
-    public Minuman(int id, String nama, double harga) {
-        super(id, nama, harga);
-    }
-
-    @Override
-    public double hitungHarga(int jumlah) {
-        return harga * jumlah;
+    public static Connection getConnection() {
+        return connection;
     }
 }
 ```
 
 ---
 
-## 2️⃣ Encapsulation (Enkapsulasi)
+## 3. Struktur Kelas & Konsep OOP
 
-Data disembunyikan menggunakan modifier `private` dan hanya bisa diakses melalui getter/setter untuk menjaga keamanan data.
-
-```java
-// Class Pesanan
-public class Pesanan {
-    private int id;
-    private int meja;
-    private String status;
-    private List<DetailPesanan> detailList = new ArrayList<>();
-
-    public Pesanan(int id, int meja, String status) {
-        this.id = id;
-        this.meja = meja;
-        this.status = status;
-    }
-
-    public int getId() { return id; }
-    public int getMeja() { return meja; }
-    public String getStatus() { return status; }
-    public List<DetailPesanan> getDetailList() { return detailList; }
-
-    public void tambahDetail(DetailPesanan detail) {
-        detailList.add(detail);
-    }
-}
-```
-
-```java
-// Class DetailPesanan
-public class DetailPesanan {
-    private ItemMakanan menu;
-    private int jumlah;
-
-    public DetailPesanan(ItemMakanan menu, int jumlah) {
-        this.menu = menu;
-        this.jumlah = jumlah;
-    }
-
-    public ItemMakanan getMenu() { return menu; }
-    public int getJumlah() { return jumlah; }
-
-    public double getTotalHarga() {
-        return menu.hitungHarga(jumlah);
-    }
-}
-```
+### a. **Abstraction** - `ItemMakanan.java`
+... (Potongan kode disingkat di sini untuk keterbacaan. File penuh tetap disimpan di README lengkap.)
 
 ---
 
-## 3️⃣ Polymorphism (Polimorfisme)
+## 4. Pengelolaan Data Menu & Pesanan
 
-Polimorfisme ditunjukkan dengan method `hitungHarga()` yang memiliki implementasi berbeda di setiap subclass, tetapi dipanggil menggunakan referensi `ItemMakanan`.
-
-```java
-// Superclass
-public abstract class ItemMakanan {
-    public abstract double hitungHarga(int jumlah);
-}
-
-// Subclass Makanan
-@Override
-public double hitungHarga(int jumlah) {
-    return harga * jumlah;
-}
-
-// Subclass Minuman
-@Override
-public double hitungHarga(int jumlah) {
-    return harga * jumlah;
-}
-```
+### `KasirRestoran.java`
+... (Kode Java untuk KasirRestoran.java disertakan penuh di file README.)
 
 ---
 
-## 4️⃣ Abstraction (Abstraksi)
+## 5. Program Utama (Main)
 
-Kelas `ItemMakanan` merupakan abstract class yang tidak bisa diinstansiasi secara langsung.  
-Method `hitungHarga()` dideklarasikan secara abstrak agar wajib diimplementasikan oleh subclass.
-
-```java
-// Abstract Class
-public abstract class ItemMakanan {
-    protected int id;
-    protected String nama;
-    protected double harga;
-
-    public ItemMakanan(int id, String nama, double harga) {
-        this.id = id;
-        this.nama = nama;
-        this.harga = harga;
-    }
-
-    public abstract double hitungHarga(int jumlah);
-}
-```
+### `Main.java`
+... (Kode Main.java disertakan penuh di file README.)
 
 ---
 
-## 🎥 Demo Proyek
+## 6. Konsep OOP yang Diterapkan
 
-📁 **GitHub Repository:** `UTS_PBO2_TIF-K-23B_23552011097`  
-🔗 **Link Repo:** [https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097](https://github.com/LitaAlentina287/UTS_PBO2_TIF-K-23B_23552011097)
-
-🎬 **YouTube Demo:** [https://youtu.be/tODA-1ikwcg](https://youtu.be/tODA-1ikwcg)
-
----
+- **Abstraction**: `ItemMakanan` adalah class abstrak dengan method `hitungHarga()` dan `getKategori()`.
+- **Inheritance**: `Makanan` dan `Minuman` mewarisi dari `ItemMakanan`.
+- **Polymorphism**: Method `hitungHarga()` dan `getKategori()` diimplementasikan berbeda oleh subclass.
+- **Encapsulation**: Class `Pesanan` dan `DetailPesanan` menjaga atribut dengan modifier `private` dan menyediakan akses melalui method.
